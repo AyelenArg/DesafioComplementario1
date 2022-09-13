@@ -1,0 +1,47 @@
+
+.body {
+    width: 100vw;
+    min-height: 100vh;
+    background-image: url("../img/fondo-palmeras.jpg");
+    filter: opacity(100%);
+    background-size: 100% 120%;
+    background-repeat: no-repeat;
+    overflow: none;  
+
+  
+    &::-webkit-scrollbar{
+        width: 9px;  
+        height: 10px;
+    
+    } 
+      &::-webkit-scrollbar-track {
+        background-color: $basetexto
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background-color: $marronmedio;
+        border-radius: 10px;
+        border: 1px solid $basetexto;
+      }
+
+    
+      .fa-solid {
+        position: sticky;
+        font-size: 30px;
+        color: $marronmedio;
+        cursor: pointer;
+        left: 15px;
+        bottom: 150px;
+      }
+      
+}
+
+@media(max-width: 375px){
+ .body{
+  .fa-solid {
+    font-size: 20px;
+  }
+}
+}
+
+

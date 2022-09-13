@@ -1,0 +1,66 @@
+footer {
+    background-image: linear-gradient(to top right, #fdfdf6cd, #d4bea97e, #fdfdf6cd);
+    padding: 35px;
+   height: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+
+    .redes {
+        display: flex;
+        flex-direction: row;
+
+        a {
+            padding: 10px;
+            font-size: 32px;
+            color: $marronfuerte;
+            text-align: center;
+            text-decoration: none;
+        }
+    }
+}
+
+//TABLET
+@media (max-width: 768px){
+    footer {
+        padding: 20px;
+        margin-bottom: 0px;
+        div{
+            a{
+                img{
+                    width: 120px;
+                }
+            }
+        }
+        .redes {
+            a {
+                        font-size: 22px;
+                    }
+                }
+    }
+}
+
+
+    
+@media (max-width: 375px) {
+    footer {
+        padding: 10px;
+        margin-bottom: 0px;
+        div{
+            a{
+                img{
+                    width: 70px;
+                }
+            }
+        }
+    
+    
+        .redes {
+    a {
+                font-size: 17px;
+            }
+        }
+    }
+}
+

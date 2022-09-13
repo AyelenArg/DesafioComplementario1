@@ -1,0 +1,5 @@
+@mixin button($basetexto, $marronfuerte){
+    background-color: $basetexto;
+color: $marronfuerte;
+padding: 5px 25px 5px 25px;;
+}

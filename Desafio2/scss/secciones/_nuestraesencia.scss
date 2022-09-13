@@ -1,0 +1,86 @@
+.esencia {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 30px;
+
+    p {
+
+        @extend %parrafos;
+        font-family: $quicksand;
+        width: 500px;
+        padding: 30px;
+        padding-bottom: 80px;
+        margin: 50px;
+
+    }
+
+    img {
+
+        width: 450px;
+        margin: 50px;
+        padding: 10px;
+        background-color: $marronmedio;
+    }
+}
+
+main img {
+    width: 100px;
+    margin-left: 450px;
+    margin-top: -330px;
+}
+
+// TABLET
+@media (max-width: 768px) {
+    .esencia {
+        p {
+            font-size: 14px;
+            width: 300px;
+            padding: 20px;
+            padding-bottom: 30px;
+            margin: 25px;
+
+        }
+
+        img {
+
+            width: 270px;
+            margin: 25px;
+            padding: 8px;
+
+        }
+    }
+    main img {
+        width: 55px;
+        margin-left: 257px;
+        margin-top: -183px;
+    
+}
+    }
+@media (max-width: 375px) {
+    .esencia {
+        flex-direction: column-reverse;
+        p {
+            font-size: 14px;
+            width: 300px;
+            padding: 12px;
+            padding-bottom: 30px;
+            margin: 1px 2px 2px 1px;
+
+        }
+
+        img {
+
+            width: 150px;
+            margin-top: 3px;
+            padding: 4px;
+
+        }
+    }
+
+    main img {
+        width: 45px;
+        margin-left: 240px;
+        margin-top: -130px;
+    }
+}

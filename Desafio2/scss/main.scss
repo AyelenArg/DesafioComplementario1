@@ -1,0 +1,25 @@
+*{
+    padding: 0;
+    margin: 0;
+
+    scroll-behavior: smooth;
+}
+
+@import './variables/tipografias';
+@import './variables/colores';
+@import './variables/extend';
+@import './variables/mixin';
+
+
+@import './secciones/titulos';
+@import './secciones/body';
+@import './secciones/header';
+@import './secciones/footer';
+@import './secciones/index';
+@import './secciones/nuestraesencia';
+@import './secciones/objetos';
+@import './secciones/tienda';
+@import './secciones/contacto';
+
+
+

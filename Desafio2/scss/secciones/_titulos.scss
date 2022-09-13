@@ -1,0 +1,40 @@
+.titulo {
+    display: block;
+
+h1{
+    font-family: $quicksand;
+    font-size: 2rem;
+    background-color: $basetexto;
+    color: $marronfuerte;
+    text-align: left;
+    padding: 20px;
+    margin: 15px;
+
+}
+}
+
+//TABLET
+@media (max-width: 768px){
+    .titulo {
+    
+        h1{
+            font-size: 1.3rem;
+            padding: 10px;
+            margin: 8px;
+        
+        }
+        }
+
+}
+@media (max-width: 375px){
+    .titulo {
+    
+    h1{
+        font-size: 0.8rem;
+        padding: 8px;
+        margin: 8px;
+    
+    }
+    }
+}
+
