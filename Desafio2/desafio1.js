@@ -20,25 +20,26 @@ let precioProducto4 = 2300
 let descuentoEfectivo = 100
 let envio = 150
 
-    
+
     
 let producto1 = new Producto ({
+    id: 1,
     imagen: "...",
     nombre:"Tapiz macrame", 
     descripcion:"Circular de macrame y telar", 
-    precio: 2500,
+    precio: precioProducto1,
     cantidad: 5,})
     console.log(producto1);
 let precioFinalProducto1 = resta(suma(precioProducto1, iva(precioProducto1), envio), descuentoEfectivo);
 console.log("Precio final $ "+ precioFinalProducto1);
 
 
-
 let producto2= new Producto ({
+    id: 2,
     imagen: "...",
     nombre: "Tapiz", 
     descripcion: "Pluma macrame", 
-    precio: 1800,
+    precio: precioProducto2,
     cantidad: 6});
 
     console.log(producto2);
@@ -47,23 +48,31 @@ let producto2= new Producto ({
 
 
 let producto3= new Producto ({
+    id: 3,
     imagen: "...",
     nombre: "Tapiz", 
     descripcion: "Macrame con flecos", 
-    precio: 2100,
+    precio: precioProducto3,
     cantidad: 2});
-    console.log(producto2);
+    console.log(producto3);
     let precioFinalProducto3 = resta(suma(precioProducto3, iva(precioProducto3), envio), descuentoEfectivo);
     console.log("Precio final $ "+precioFinalProducto3);
 
 
 let producto4= new Producto ({
+    id: 4,
     imagen: "...",
     nombre: "Tapiz", 
     descripcion: "Telar combinado", 
-    precio: 2300,
+    precio: precioProducto4,
     cantidad: 1});      
     
     console.log(producto4);
     let precioFinalProducto4 = resta(suma(precioProducto4, iva(precioProducto4), envio), descuentoEfectivo);
     console.log("Precio final $ "+precioFinalProducto4);
+
+
+
+
+
+
