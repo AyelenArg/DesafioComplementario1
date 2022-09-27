@@ -30,15 +30,13 @@ alert(
           "Bienvenido a Revuelta Deco"
         )
 
-const productos = [
-        { id: 4, nombre: "Tapiz telar combinado", precio:"$" + 2300},
-        { id: 1, nombre: "Tapiz circular", precio:"$" + 2500},
-        { id: 2, nombre: "Tapiz pluma macrame", precio:"$" + 1800},
-        { id: 3, nombre: "Tapiz macrame flecos", precio:"$" + 2100},
-    ];
-  
-    productos.push({id: 5, nombre:"Tapiz plumas varias", precio: "$" + 2100});
-    productos.push({id: 6, nombre:"Platos cuadrados", precio:"$" + 1100});
+const productos = [];
+productos.push({id: 1, nombre:"Tapiz macrame", precio: "$" + 2500});
+productos.push({id: 2, nombre:"Tapiz plumas macrame", precio: "$" + 1800});
+productos.push({id: 3, nombre:"Tapiz macrame flecos", precio: "$" + 2100});
+productos.push({id: 4, nombre:"Tapiz telar combinado", precio: "$" + 2300});
+productos.push({id: 5, nombre:"Tapiz plumas varias", precio: "$" + 2100});
+productos.push({id: 6, nombre:"Platos cuadrados", precio:"$" + 1100});
     
     productos.shift()
     
@@ -55,25 +53,26 @@ let tienda = prompt("Quiere ver nuestros productos en stock?")
 }))
 
 let busqueda = prompt("Ingrese el nombre del producto")
-let encontrar =productos.find(Producto => Producto.nombre === "")
+let productoEncontrado = productos.find(Producto => Producto.nombre.toLowerCase() === busqueda)
 while (busqueda != "ESC") {
     switch (busqueda) {
-      case "tapiz circular":
-        alert("tapiz circular, $2500, 5 en stock ");
+      case "tapiz macrame":
+        alert(productoEncontrado.nombre,  productoEncontrado.precio);
         break;
-      case "tapiz pluma":
-        alert("Tapiz pluma macrame, $1800, 6 en stock");
+      case "tapiz plumas":
+        alert(productoEncontrado.nombre + productoEncontrado.precio);
         break;
-        case "macrame flecos":
-        alert("Macrame con flecos, $2100, 2 en stock");
+        case "tapiz macrame flecos":
+        alert(productoEncontrado.nombre + productoEncontrado.precio);
         break;
         case "tapiz telar combinado":
-        alert("Tapiz en telar combinado, $2300, 1 en stock");
+        alert(productoEncontrado.nombre + productoEncontrado.precio);
         break;
-        case "platos":
-        alert("Platos cuadrados, $1100, 8 en stock");
+        case "platos cuadrados":
+        alert(productoEncontrado.nombre + productoEncontrado.precio);
         break;
      default:
+      alert(`producto no encontrado`)
         break;
         
     }
@@ -87,6 +86,22 @@ console.log(filtrar);
 
 
 
+//Interactuar con HTML
+let contenedor = document.getElementById("contenedor");
 
+
+productos.forEach((producto) => {
+  let item = document.createElement("div");
+  item.innerHTML = `
+    <h2>Id: ${producto.id}</h2>
+    <img src="../img/tienda/atrapasuenos.jpg" alt="atrapasueño id="foto" style="width:160px; height:200px;"/>
+    <p>Producto: ${producto.nombre}</p>
+    <h3>${producto.precio}</h3>
+  `;
+  contenedor.append(item);
+});
+
+let titulo = document.getElementById("tienda");
+saludo.innerHTML = "Bienvenido a la tienda virtual"
 
 
