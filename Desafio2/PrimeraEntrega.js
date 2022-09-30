@@ -19,65 +19,48 @@ let iva = x => x * 0.21
 let descuentoEfectivo = 100
 let envio = 150
 
+
+const inputBusqueda = document.getElementById("inputBusqueda")
+const botonInput = document.getElementById("botonInput")
     
+
+
+const productos = [];
+productos.push({id: 1,imagen:"../img/tienda/atrapasuenos.jpg", nombre:"Tapiz circular macramé y telar", precio: "$" + 2400});
+productos.push({id: 2,imagen:"../img/tienda//macramepluma.jpg", nombre:"Tapiz plumas macrame", precio: "$" + 1800});
+productos.push({id: 3,imagen:"../img/tienda/tapizmacrame2.jpg", nombre:"Tapiz macrame flecos", precio: "$" + 2100});
+productos.push({id: 4,imagen:"../img/tienda/tapiztelar.jpg", nombre:"Tapiz telar combinado", precio: "$" + 2300});
+productos.push({id: 5,imagen:"../img/tienda/macrameplumas.jpg", nombre:"Tapiz plumas", precio: "$" + 2100});
+productos.push({id: 6,imagen:"../img/tienda/ceramicacuadrado.jpg", nombre:"Platos hondos cuadrados", precio:"$" + 1100});
+productos.push({id: 7,imagen:"../img/tienda/ceramicabowl.jpg", nombre:"Bowls y plato color salpicado", precio:"$" + 1300});
+productos.push({id: 8,imagen:"../img/tienda/macramesouvenir.jpg", nombre:"Souvenirs macramé", precio:"CONSULTAR"});
+
+
+
+productos.shift()
     
-let producto1 = new Producto (1, "...", "Tapiz macrame", "Circular de macrame y telar", 2500, 5)
-let producto2 = new Producto (2, "...", "Tapiz", "Pluma macrame", 1800, 6);
-let producto3 = new Producto (3, "...", "Tapiz", "Macrame con flecos", 2100, 2);
-let producto4 = new Producto (4, "...", "Tapiz", "Telar combinado", 2300,1); 
-    
+console.log(productos);
+
 alert(
           "Bienvenido a Revuelta Deco"
         )
 
-const productos = [];
-productos.push({id: 1, nombre:"Tapiz macrame", precio: "$" + 2500});
-productos.push({id: 2, nombre:"Tapiz plumas macrame", precio: "$" + 1800});
-productos.push({id: 3, nombre:"Tapiz macrame flecos", precio: "$" + 2100});
-productos.push({id: 4, nombre:"Tapiz telar combinado", precio: "$" + 2300});
-productos.push({id: 5, nombre:"Tapiz plumas varias", precio: "$" + 2100});
-productos.push({id: 6, nombre:"Platos cuadrados", precio:"$" + 1100});
-    
-    productos.shift()
-    
-    console.log(productos);
 
-
-let tienda = prompt("Quiere ver nuestros productos en stock?")
-
-
-    productos.forEach((Producto =>{
-    alert( `nombre: ${Producto.nombre};
-            precio: ${Producto.precio};
-            `);
-}))
-
-let busqueda = prompt("Ingrese el nombre del producto")
-let productoEncontrado = productos.find(Producto => Producto.nombre.toLowerCase() === busqueda)
-while (busqueda != "ESC") {
-    switch (busqueda) {
-      case "tapiz macrame":
-        alert(productoEncontrado.nombre,  productoEncontrado.precio);
-        break;
-      case "tapiz plumas":
-        alert(productoEncontrado.nombre + productoEncontrado.precio);
-        break;
-        case "tapiz macrame flecos":
-        alert(productoEncontrado.nombre + productoEncontrado.precio);
-        break;
-        case "tapiz telar combinado":
-        alert(productoEncontrado.nombre + productoEncontrado.precio);
-        break;
-        case "platos cuadrados":
-        alert(productoEncontrado.nombre + productoEncontrado.precio);
-        break;
-     default:
-      alert(`producto no encontrado`)
-        break;
-        
-    }
-    busqueda = prompt("Ingrese el nombre del producto");
+function agregarAlCarrito(producto) {
+  let buscarProducto = carrito.find(item => item.id === producto.id)
+  if (buscarProducto !== undefined) {
+    buscarProducto.precio = buscarProducto.precio + producto.precio
+    buscarProducto.cantidad = buscarProducto.cantidad + 1
+  } else {
+    carrito.push({
+      id: producto.id,
+      nombre: producto.nombre,
+      precio: producto.precio,
+      img: producto.img,
+      cantidad: 1
+    })
   }
+}
 
 
 let filtrar = productos.filter(Producto => Producto.precio < 1500);
@@ -85,23 +68,36 @@ console.log(filtrar);
 
 
 
-
 //Interactuar con HTML
 let contenedor = document.getElementById("contenedor");
 
-
-productos.forEach((producto) => {
-  let item = document.createElement("div");
+let carrito = []
+productos.forEach(producto => {
+  let item = document.createElement("div")
   item.innerHTML = `
-    <h2>Id: ${producto.id}</h2>
-    <img src="../img/tienda/atrapasuenos.jpg" alt="atrapasueño id="foto" style="width:160px; height:200px;"/>
-    <p>Producto: ${producto.nombre}</p>
-    <h3>${producto.precio}</h3>
+  <div class="card">
+    <img class="card.img" src=${producto.imagen}>
+    <p>${producto.nombre}</p>
+    <h4>${producto.precio}</h4>
+    <a href="#">Agregar al carrito</a>
+    </div>
   `;
+  
   contenedor.append(item);
+  const boton = document.getElementById(producto.id)
+  boton.addEventListener("click", () => comprarProducto(producto))
 });
 
-let titulo = document.getElementById("tienda");
-saludo.innerHTML = "Bienvenido a la tienda virtual"
+const verCarrito = document.getElementById("carrito")
+verCarrito.addEventListener("click", () => console.log(verCarrito))
 
 
+
+const buscarProducto = (string) =>{
+  console.log(string);
+  let productoBuscado = productos.find(producto => producto.nombre.includes(string))
+  console.log(productoBuscado);
+  inputBusqueda.value = ``
+}
+
+botonInput.addEventListener("click", () =>console.log(inputBusqueda.value))
