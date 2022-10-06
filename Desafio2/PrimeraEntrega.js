@@ -41,11 +41,12 @@ productos.shift()
     
 console.log(productos);
 
-alert(
-          "Bienvenido a Revuelta Deco"
-        )
 
+let filtrar = productos.filter(Producto => Producto.precio < 1500);
+console.log(filtrar);
 
+//Interactuar con HTML
+let contenedor = document.getElementById("contenedor");
 function agregarAlCarrito(producto) {
   let buscarProducto = carrito.find(item => item.id === producto.id)
   if (buscarProducto !== undefined) {
@@ -61,19 +62,9 @@ function agregarAlCarrito(producto) {
     })
   }
 }
-
-
-let filtrar = productos.filter(Producto => Producto.precio < 1500);
-console.log(filtrar);
-
-
-
-//Interactuar con HTML
-let contenedor = document.getElementById("contenedor");
-
 let carrito = []
 productos.forEach(producto => {
-  let item = document.createElement("div")
+  let item = document.createElement("div");
   item.innerHTML = `
   <div class="card">
     <img class="card.img" src=${producto.imagen}>
