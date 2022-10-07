@@ -46,14 +46,14 @@ let filtrar = productos.filter(Producto => Producto.precio < 1500);
 console.log(filtrar);
 
 //Interactuar con HTML
-let contenedor = document.getElementById("contenedor");
-function agregarAlCarrito(producto) {
+
+const comprarProducto = (producto) => {
   let buscarProducto = carrito.find(item => item.id === producto.id)
   if (buscarProducto !== undefined) {
-    buscarProducto.precio = buscarProducto.precio + producto.precio
+   buscarProducto.precio = buscarProducto.precio + producto.precio
     buscarProducto.cantidad = buscarProducto.cantidad + 1
   } else {
-    carrito.push({
+     carrito.push({
       id: producto.id,
       nombre: producto.nombre,
       precio: producto.precio,
@@ -62,33 +62,45 @@ function agregarAlCarrito(producto) {
     })
   }
 }
+
+localStorage.setItem("carrito", JSON.stringify(productos));
+
+let contenedor = document.getElementById("contenedor");
 let carrito = []
 productos.forEach(producto => {
   let item = document.createElement("div");
   item.innerHTML = `
   <div class="card">
-    <img class="card.img" src=${producto.imagen}>
+    <img src=${producto.imagen}>
     <p>${producto.nombre}</p>
     <h4>${producto.precio}</h4>
-    <a href="#">Agregar al carrito</a>
+   <button id=${producto.id} class= "button">Agregar al carrito</button>
     </div>
   `;
   
-  contenedor.append(item);
-  const boton = document.getElementById(producto.id)
+ contenedor.append(item);
+  
+ const boton = document.getElementById(producto.id)
   boton.addEventListener("click", () => comprarProducto(producto))
 });
 
 const verCarrito = document.getElementById("carrito")
-verCarrito.addEventListener("click", () => console.log(verCarrito))
+verCarrito?.addEventListener("click", () => console.log(verCarrito))
 
 
 
-const buscarProducto = (string) =>{
-  console.log(string);
-  let productoBuscado = productos.find(producto => producto.nombre.includes(string))
+const buscarProducto = (input) =>{
+  console.log(input);
+  let productoBuscado = productos.find(producto => producto.nombre.includes(input))
   console.log(productoBuscado);
   inputBusqueda.value = ``
 }
 
 botonInput.addEventListener("click", () =>console.log(inputBusqueda.value))
+
+
+const botonVaciar = document.getElementById("vaciarCarrito");
+
+verCarrito?.addEventListener("click",() => console.log(carrito))
+verCarrito?.addEventListener("click",() => localStorage.setItem("carrito", JSON.stringify(carrito)))
+botonVaciar.addEventListener("click", () => localStorage.clear(carrito))

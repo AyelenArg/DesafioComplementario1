@@ -2,6 +2,8 @@
 .fondotienda{
     background-color: $basetexto;
 }
+
+
 .container {
     width: 100%;
     height: 100%;
@@ -51,7 +53,7 @@
 
         }
 
-        a {
+        .button {
             @include button($basetexto, $marronfuerte);
             text-decoration: none;
             font-size: 15px;
