@@ -449,8 +449,28 @@ main img {
       font-weight: bold;
       color:rgb(252, 252, 252);
       padding: 10px 25px;
+}
 
-    }
+.botonVaciar button:hover {
+  box-shadow: 0 1px 2px 0;
+  transform: scale(1.05);
+  background-color: #d4bea97e;
+  color: #fdfdf6cd;
+  font-weight: bold;
+  transition: 0.3s; }
+
+  .botonTienda {
+    display: inline-block;
+    margin-left: 25px;
+  }
+  .botonTienda button {
+   border: none;
+  }
+  .botonTienda button i {
+font-weight: 50px;
+background-color:#fbf8f6;
+text-decoration: none;
+  }
 .container {
   width: 100%;
   height: 100%;
