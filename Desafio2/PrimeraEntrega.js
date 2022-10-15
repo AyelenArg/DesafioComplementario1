@@ -76,7 +76,7 @@ productos.forEach(producto => {
   })})
 });
 
-const comprarProducto = (producto) => {
+/* const comprarProducto = (producto) => {
   const {id, imagen, nombre, precio} = producto;
   let buscarProducto = carrito.find(item => item.id === id)
   if (buscarProducto === undefined) {
@@ -90,6 +90,26 @@ const comprarProducto = (producto) => {
   } else {
 buscarProducto.precio = buscarProducto.precio + precio
    buscarProducto.cantidad = buscarProducto.cantidad + 1
+  }
+} */
+
+const comprarProducto = (producto) => {
+  const {id, imagen, nombre, precio} = producto;
+  let buscarProducto = carrito.find(item => item.id === id) 
+  let productoExiste = buscarProducto ? true : false
+  
+  if (productoExiste) {
+productoExiste.precio = buscarProducto.precio + precio
+productoExiste.cantidad = buscarProducto.cantidad + 1
+  } else {        
+    carrito.push({
+    id: id,
+    nombre: nombre,
+    precio: precio,
+    img: imagen,
+    cantidad: 1,
+  })
+
   }
 }
 
