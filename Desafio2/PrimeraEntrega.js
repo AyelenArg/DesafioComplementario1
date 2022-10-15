@@ -35,20 +35,17 @@ const productos = [
 
 
 productos.shift()
-    
 console.log(productos);
-
 
 let filtrar = productos.filter(Producto => Producto.precio < 1500);
 console.log(filtrar);
 
+
 //Interactuar con HTML
-
-
-
 
 let carrito = []
 productos.forEach(producto => {
+  //DESESTRUCTURACION
   const {id, imagen, nombre, precio} = producto;
   let productoRenderizado = document.createElement("div");
   productoRenderizado.innerHTML = `
@@ -76,28 +73,13 @@ productos.forEach(producto => {
   })})
 });
 
-/* const comprarProducto = (producto) => {
-  const {id, imagen, nombre, precio} = producto;
-  let buscarProducto = carrito.find(item => item.id === id)
-  if (buscarProducto === undefined) {
-        carrito.push({
-      id: id,
-      nombre: nombre,
-      precio: precio,
-      img: imagen,
-      cantidad: 1,
-    })
-  } else {
-buscarProducto.precio = buscarProducto.precio + precio
-   buscarProducto.cantidad = buscarProducto.cantidad + 1
-  }
-} */
+
 
 const comprarProducto = (producto) => {
   const {id, imagen, nombre, precio} = producto;
   let buscarProducto = carrito.find(item => item.id === id) 
+  //TERNARIO
   let productoExiste = buscarProducto ? true : false
-  
   if (productoExiste) {
 productoExiste.precio = buscarProducto.precio + precio
 productoExiste.cantidad = buscarProducto.cantidad + 1
@@ -114,8 +96,6 @@ productoExiste.cantidad = buscarProducto.cantidad + 1
 }
 
 
-
-
 localStorage.setItem("verCarrito", JSON.stringify(productos));
 const verCarrito = document.getElementById("verCarrito")
 verCarrito.addEventListener("click", () => console.log(carrito))
@@ -130,7 +110,6 @@ const buscarProducto = (input) =>{
 }
 
 botonInput.addEventListener("click", () =>console.log(inputBusqueda.value))
-
 
 const botonVaciar = document.getElementById("vaciarCarrito");
 
