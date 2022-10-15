@@ -33,6 +33,7 @@ const productos = [
 ];
 
 
+
 productos.shift()
     
 console.log(productos);
@@ -48,13 +49,14 @@ console.log(filtrar);
 
 let carrito = []
 productos.forEach(producto => {
+  const {id, imagen, nombre, precio} = producto;
   let productoRenderizado = document.createElement("div");
   productoRenderizado.innerHTML = `
   <div class="card">
-    <img src=${producto.imagen}>
-    <p>${producto.nombre}</p>
-    <h4>${producto.precio}</h4>
-   <button id=${producto.id} class= "button">Agregar al carrito</button>
+    <img src=${imagen}>
+    <p>${nombre}</p>
+    <h4>${precio}</h4>
+   <button id=${id} class= "button">Agregar al carrito</button>
     </div>
   `;
   
@@ -75,20 +77,23 @@ productos.forEach(producto => {
 });
 
 const comprarProducto = (producto) => {
-  let buscarProducto = carrito.find(item => item.id === producto.id)
+  const {id, imagen, nombre, precio} = producto;
+  let buscarProducto = carrito.find(item => item.id === id)
   if (buscarProducto === undefined) {
         carrito.push({
-      id: producto.id,
-      nombre: producto.nombre,
-      precio: producto.precio,
-      img: producto.imagen,
+      id: id,
+      nombre: nombre,
+      precio: precio,
+      img: imagen,
       cantidad: 1,
     })
   } else {
-buscarProducto.precio = buscarProducto.precio + producto.precio
+buscarProducto.precio = buscarProducto.precio + precio
    buscarProducto.cantidad = buscarProducto.cantidad + 1
   }
 }
+
+
 
 
 localStorage.setItem("verCarrito", JSON.stringify(productos));
@@ -120,7 +125,7 @@ botonVaciar.addEventListener("click", () =>{
   Swal.fire({
     position: 'center-top',
     icon: `success`,
-    text: 'Vaciaste el carrito',
+    text: 'El carrito esta vacio!',
     width: 200,
     height: 100, 
     iconColor: "#d4bea97e",
@@ -128,3 +133,5 @@ botonVaciar.addEventListener("click", () =>{
     timer: 1500
   })
     });
+
+
