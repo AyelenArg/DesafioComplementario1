@@ -15,13 +15,13 @@ let iva = x => x * 0.21
 let descuentoEfectivo = 100
 let envio = 150
 
-const contenedor = document.getElementById("contenedor");
+/* const contenedor = document.getElementById("contenedor"); */
 const inputBusqueda = document.getElementById("inputBusqueda")
 const botonInput = document.getElementById("botonBusqueda")
     
 
 
-const productos = [
+/* const productos = [
 {id: 1,imagen:"../img/tienda/atrapasuenos.jpg", nombre:"Tapiz circular macramé y telar", precio: "$" + 2400},
 {id: 2,imagen:"../img/tienda//macramepluma.jpg", nombre:"Tapiz plumas macrame", precio: "$" + 1800},
 {id: 3,imagen:"../img/tienda/tapizmacrame2.jpg", nombre:"Tapiz macrame flecos", precio: "$" + 2100},
@@ -30,7 +30,7 @@ const productos = [
 {id: 6,imagen:"../img/tienda/ceramicacuadrado.jpg", nombre:"Platos hondos cuadrados", precio:"$" + 1100},
 {id: 7,imagen:"../img/tienda/ceramicabowl.jpg", nombre:"Bowls y plato color salpicado", precio:"$" + 1300},
 {id: 8,imagen:"../img/tienda/macramesouvenir.jpg", nombre:"Souvenirs macramé", precio:"CONSULTAR"},
-];
+]; */
 
 
 
@@ -44,10 +44,17 @@ console.log(filtrar);
 //Interactuar con HTML
 
 let carrito = []
+
+const traerProductos = async () => {
+  const contenedor = document.getElementById("contenedor");
+
+const response = await fetch("./objetos.json")
+const productos = await response.json()
+
 productos.forEach(producto => {
   //DESESTRUCTURACION
   const {id, imagen, nombre, precio} = producto;
-  let productoRenderizado = document.createElement("div");
+  const productoRenderizado = document.createElement("div");
   productoRenderizado.innerHTML = `
   <div class="card">
     <img src=${imagen}>
@@ -71,7 +78,7 @@ productos.forEach(producto => {
     showConfirmButton: false,
     timer: 1500
   })})
-});
+})};
 
 
 
