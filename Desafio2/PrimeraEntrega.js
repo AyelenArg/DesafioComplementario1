@@ -19,8 +19,6 @@ let envio = 150
 const inputBusqueda = document.getElementById("inputBusqueda")
 const botonInput = document.getElementById("botonBusqueda")
     
-
-
 /* const productos = [
 {id: 1,imagen:"../img/tienda/atrapasuenos.jpg", nombre:"Tapiz circular macramé y telar", precio: "$" + 2400},
 {id: 2,imagen:"../img/tienda//macramepluma.jpg", nombre:"Tapiz plumas macrame", precio: "$" + 1800},
@@ -32,7 +30,16 @@ const botonInput = document.getElementById("botonBusqueda")
 {id: 8,imagen:"../img/tienda/macramesouvenir.jpg", nombre:"Souvenirs macramé", precio:"CONSULTAR"},
 ]; */
 
+//Interactuar con HTML
 
+let carrito = []
+
+
+const traerProductos = async () => {
+const contenedor = document.getElementById("contenedor");
+
+const response = await fetch("../objetos.json");
+const productos = await response.json();
 
 productos.shift()
 console.log(productos);
@@ -40,19 +47,8 @@ console.log(productos);
 let filtrar = productos.filter(Producto => Producto.precio < 1500);
 console.log(filtrar);
 
-
-//Interactuar con HTML
-
-let carrito = []
-
-const traerProductos = async () => {
-  const contenedor = document.getElementById("contenedor");
-
-const response = await fetch("./objetos.json")
-const productos = await response.json()
-
-productos.forEach(producto => {
   //DESESTRUCTURACION
+  productos.forEach(producto => {
   const {id, imagen, nombre, precio} = producto;
   const productoRenderizado = document.createElement("div");
   productoRenderizado.innerHTML = `
@@ -78,7 +74,7 @@ productos.forEach(producto => {
     showConfirmButton: false,
     timer: 1500
   })})
-})};
+});
 
 
 
@@ -101,7 +97,6 @@ productoExiste.cantidad = buscarProducto.cantidad + 1
 
   }
 }
-
 
 localStorage.setItem("verCarrito", JSON.stringify(productos));
 const verCarrito = document.getElementById("verCarrito")
@@ -139,5 +134,6 @@ botonVaciar.addEventListener("click", () =>{
     timer: 1500
   })
     });
+  }
 
-
+console.log("hola mundo");
