@@ -102,6 +102,8 @@ const buscarProducto = (input) =>{
   inputBusqueda.value = ``
 }
 
+
+
 botonInput.addEventListener("click", () =>console.log(inputBusqueda.value))
 
 const botonVaciar = document.getElementById("vaciarCarrito");
